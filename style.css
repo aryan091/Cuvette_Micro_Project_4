@@ -111,3 +111,15 @@ button:hover {
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
   outline: none;
 }
+
+@media screen and (max-width : 415px) {
+    .calc-box {
+        height: 500px;
+        width: 100%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        padding: 1rem;
+      }
+}
