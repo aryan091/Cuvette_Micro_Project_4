@@ -14,6 +14,7 @@ try {
     if(btnVal === "=" && output !=="")
 {
     output = eval(output);
+    output = Number(output).toFixed(3);
 }
 else if( btnVal === "DEL")
 {
