@@ -1,0 +1,44 @@
+let displayValue = document.getElementById('displayText');
+const buttons = document.querySelectorAll('button');
+
+const specialCharacters = ['+', '/', 'x', '-'];
+let output = "";
+
+const calc = (btnVal) => {
+    displayValue.focus();
+
+    if (btnVal === "x") {
+        btnVal = '*';
+    }
+
+    if (btnVal === "=" && output !== "") {
+        output = eval(output);
+    } else if (btnVal === "DEL") {
+        output = output.toString().slice(0, -1);
+    } else if (btnVal === "RESET") {
+        output = "";
+    } else {
+        // Allow starting with a negative value
+        if (output === "" && btnVal === "-") {
+            output = "-";
+            displayValue.value = output;
+            return;
+        }
+
+        // Check if the last character in output is a special character
+        const lastChar = output.slice(-1);
+        if (specialCharacters.includes(lastChar) && specialCharacters.includes(btnVal)) {
+            // If both the last character and the current button are special characters, replace the last one
+            output = output.slice(0, -1) + btnVal;
+        } else {
+            // Otherwise, concatenate the button value to the output
+            output = output + btnVal;
+        }
+    }
+
+    displayValue.value = output;
+};
+
+buttons.forEach((button) => {
+    button.addEventListener("click", (e) => calc(e.target.textContent));
+});
