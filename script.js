@@ -8,6 +8,12 @@ const isDecimal = (number) => {
     return number % 1 !== 0;
 }
 
+function removeTrailingZeros(inputString) {
+
+    return inputString.replace(/\.?0+$/, '');
+  }
+
+
 const calc = (btnVal) => {
 displayValue.focus();
 if(btnVal === "x")
@@ -20,6 +26,7 @@ try {
     output = eval(output);
     output = Number(output);
     output = isDecimal(output) ? Number(output).toFixed(3) : output;
+    output = removeTrailingZeros(output)
 
 }
 else if( btnVal === "DEL")
