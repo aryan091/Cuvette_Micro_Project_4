@@ -4,6 +4,10 @@ const buttons = document.querySelectorAll('button')
 const specialChacarters = [ '+' , '/' , 'x' ,'-']
 let output = "";
 
+const isDecimal = (number) => {
+    return number % 1 !== 0;
+}
+
 const calc = (btnVal) => {
 displayValue.focus();
 if(btnVal === "x")
@@ -14,7 +18,9 @@ try {
     if(btnVal === "=" && output !=="")
 {
     output = eval(output);
-    output = Number(output).toFixed(3);
+    output = Number(output);
+    output = isDecimal(output) ? Number(output).toFixed(3) : output;
+
 }
 else if( btnVal === "DEL")
 {
