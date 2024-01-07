@@ -26,7 +26,7 @@ try {
     output = eval(output);
     output = Number(output);
     output = isDecimal(output) ? Number(output).toFixed(3) : output;
-    output = removeTrailingZeros(output)
+    output = removeTrailingZeros(output.toString())
 
 }
 else if( btnVal === "DEL")
